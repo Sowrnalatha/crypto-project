@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES-256 Secure File Locker</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Boxicons for modern icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <header>
+            <i class='bx bxs-check-shield logo-icon'></i>
+            <h1>SecureLocker</h1>
+            <p>AES-256 Encrypt & Decrypt your files seamlessly.</p>
+        </header>
+
+        <form id="crypto-form">
+            <!-- File Upload -->
+            <div class="upload-area" id="upload-area">
+                <i class='bx bx-cloud-upload upload-icon'></i>
+                <p id="filename-display">Drag & drop a file here or <span>browse</span></p>
+                <input type="file" id="file-input" name="file" required>
+            </div>
+
+            <!-- Password Input -->
+            <div class="input-group">
+                <i class='bx bxs-lock-alt'></i>
+                <input type="password" id="password" name="password" placeholder="Enter secure password" required>
+                <i class='bx bx-show toggle-password'></i>
+            </div>
+
+            <!-- Error/Success Banner -->
+            <div id="status-message" class="hidden"></div>
+
+            <!-- Actions -->
+            <div class="action-buttons">
+                <button type="button" class="btn btn-encrypt" data-action="encrypt">
+                    <i class='bx bx-lock'></i> Encrypt
+                </button>
+                <button type="button" class="btn btn-decrypt" data-action="decrypt">
+                    <i class='bx bx-lock-open-alt'></i> Decrypt
+                </button>
+            </div>
+            
+            <div class="loader-container hidden" id="loader">
+                <div class="spinner"></div>
+                <span>Processing secure file...</span>
+            </div>
+        </form>
+    </div>
+
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
