@@ -84,11 +84,37 @@ document.addEventListener('DOMContentLoaded', () => {
         setLoading(true);
         hideStatus();
 
+        // Visual Animation for AES Steps
+        const steps = document.querySelectorAll('.aes-info .step');
+        steps.forEach((s, index) => {
+            s.classList.remove('active', 'completed');
+            const num = s.querySelector('.step-num');
+            if (num) num.innerHTML = index + 1;
+        });
+
+        const animateSteps = async () => {
+            const isDecrypt = action === 'decrypt';
+            const start = isDecrypt ? steps.length - 1 : 0;
+            const end = isDecrypt ? -1 : steps.length;
+            const stepAmount = isDecrypt ? -1 : 1;
+
+            for (let i = start; i !== end; i += stepAmount) {
+                steps[i].classList.add('active');
+                await new Promise(r => setTimeout(r, 600)); // Delay to show step progress
+                steps[i].classList.remove('active');
+                steps[i].classList.add('completed');
+                const num = steps[i].querySelector('.step-num');
+                if (num) num.innerHTML = "<i class='bx bx-check'></i>";
+            }
+        };
+
         try {
-            const response = await fetch('/process', {
+            const fetchPromise = fetch('/process', {
                 method: 'POST',
                 body: formData
             });
+
+            const [response] = await Promise.all([fetchPromise, animateSteps()]);
 
             if (response.ok) {
                 // Determine filename from Content-Disposition header if available

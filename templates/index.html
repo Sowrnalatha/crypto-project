@@ -14,6 +14,44 @@
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
+    <div class="aes-info">
+        <div class="aes-icon-container">
+            <i class='bx bx-shield-quarter'></i>
+        </div>
+        <h2>Process of AES-256</h2>
+        <p>AES (Advanced Encryption Standard) encrypts data in 128-bit blocks using a 256-bit key. It is mathematically secure against brute-force attacks.</p>
+        <div class="aes-steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div>
+                    <strong>Key Expansion</strong>
+                    <p>Derives 14 round keys from the master passkey.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div>
+                    <strong>Initial Round</strong>
+                    <p>AddRoundKey operation mixes data.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div>
+                    <strong>13 Main Rounds</strong>
+                    <p>SubBytes, ShiftRows, MixColumns, AddRoundKey.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <div>
+                    <strong>Final Round</strong>
+                    <p>SubBytes, ShiftRows, and AddRoundKey.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <i class='bx bxs-check-shield logo-icon'></i>
